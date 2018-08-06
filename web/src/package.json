@@ -1,0 +1,13 @@
+{
+  "name": "shortener",
+  "version": "1.0.0",
+  "description": "Url Shorttener service",
+  "main": "app.js",
+  "author": "narongrit",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.3",
+    "mongoose": "^5.2.6",
+    "shortid": "^2.2.12"
+  }
+}
