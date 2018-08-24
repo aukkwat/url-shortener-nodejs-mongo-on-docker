@@ -17,5 +17,10 @@ services:
     build: ./web
     ports:
       - "3000:3000"
+    environment:
+      - LPN_MONGO_HOST='http://3dsshorturl.opcellent.com'
+      - LPN_MONGO_USER=root
+      - LPN_MONGO_PASS=example
+      - LPN_MONGO_DB=url_shortener
     depends_on:
       - mongo
