@@ -1,0 +1,27 @@
+mongo:
+  container_name: mongo
+  image: 'bitnami/mongodb:latest'
+  ports:
+    - "27017:27017"
+  environment:
+    - MONGODB_USERNAME=root
+    - MONGODB_PASSWORD=example
+    - MONGODB_DATABASE=url_shortener
+  restart: always
+  volumes:
+    - ./mongodb_data:/bitnami
+web:
+  container_name: urlshortener
+  build: ./web
+  links:
+    - mongo
+  environment:
+    - VIRTUAL_HOST=3dsshorturl.opcellent.com
+    - LETSENCRYPT_HOST=3dsshorturl.opcellent.com
+    - LETSENCRYPT_EMAIL=aukkwat@opcellent.com
+    - VIRTUAL_PORT=3000
+    - LPN_WEB_HOST='https://3dsshorturl.opcellent.com'
+    - LPN_MONGO_HOST=mongo
+    - LPN_MONGO_USER=root
+    - LPN_MONGO_PASS=example
+    - LPN_MONGO_DB=url_shortener
